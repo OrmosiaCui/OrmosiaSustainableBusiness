@@ -3,18 +3,13 @@ import pickle
 
 app=Flask(__name__)
 GB=pickle.load(open('savedmodelGB.sav','rb'))
-@app.route('/')
-def home():
-    result=''
-    return render_template('index.html',**locals())
 
-@app.route('/school-website')
+@app.route('/')
 def school_website():
-    return render_template('index.html', url='https://sites.google.com/nyu.edu/xinleicui/home')
+    return render_template('index.html', url='https://github.com/OrmosiaCui/OrmosiaSustainableBusiness.github.io.git')
 
 if __name__ == '__main__':
     app.run()
-
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
@@ -33,4 +28,3 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    app.run(4999)
