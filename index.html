@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--<html>-->
-<!--<head>-->
-<!--    <meta http-equiv="refresh" content="0; url=https://github.com/OrmosiaCui/Data-Visualization/blob/main/deploy.py">&ndash;&gt;-->
-<!--</head>-->
-<!--</html>-->
 
 <html lang="en">
 <head>
@@ -42,7 +37,7 @@ p {
 </head>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
     <body>
         <form action="/predict" method="POST">
