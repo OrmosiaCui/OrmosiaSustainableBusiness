@@ -5,8 +5,8 @@ app=Flask(__name__, static_url_path='/static')
 GB=pickle.load(open('savedmodelGB.sav','rb'))
 
 @app.route('/')
-def school_website():
-    return render_template('index.html', url='https://github.com/OrmosiaCui/OrmosiaSustainableBusiness.github.io.git')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()
@@ -24,7 +24,7 @@ def predict():
     purchased = float(request.form['purchased'])
     result = GB.predict([[decisions,meaningful,personal_identity,Feeling_good,knowledge,not_available,
                         uncertainty,preference,purchased]])[0]
-    return render_template('index.html',**locals())
+    return render_template('index.html',result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
