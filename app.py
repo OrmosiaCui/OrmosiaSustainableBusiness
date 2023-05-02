@@ -1,15 +1,14 @@
 from flask import Flask, render_template, request
+from flask_frozen import Freezer
 import pickle
 
 app=Flask(__name__, static_url_path='/static')
+freezer = Freezer(app)
 GB=pickle.load(open('savedmodelGB.sav','rb'))
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
-if __name__ == '__main__':
-    app.run()
 
 @app.route('/predict',methods=['POST','GET'])
 def predict():
@@ -27,4 +26,4 @@ def predict():
     return render_template('index.html',result=result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    freezer.freeze()
